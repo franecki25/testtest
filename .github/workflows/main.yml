@@ -1,4 +1,4 @@
-name: Run Docker Compose6
+name: Run Docker Compose7
 
 on:
   push:
