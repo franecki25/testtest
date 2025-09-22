@@ -1,7 +1,7 @@
 FROM qmcgaw/gluetun:latest
 
 RUN apk update && \
-apk add qbittorrent-nox
+RUN apk --no-cache add dpkg curl wget unzip net-tools socat
 
 ENV VPN_SERVICE_PROVIDER=private internet access
 ENV OPENVPN_USER=${OPENVPN_USER}
