@@ -27,5 +27,4 @@ jobs:
     - name: Build & Push Image
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "franeckn" --password-stdin
-        docker image build -t franeckn/testtest:v1 .
-        docker push franeckn/testtest:v1
+        docker compose -f docker-compose.yml up -d
