@@ -28,3 +28,13 @@ jobs:
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "franeckn" --password-stdin
         docker compose -f docker-compose.yml up -d
+
+    - name: Wait for services to be ready
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '200s'  # Adjust based on how long services take to start
+
+    - name: Check container status
+      run: |
+        docker compose -f docker-compose.yml ps
+        docker compose -f docker-compose.yml logs
