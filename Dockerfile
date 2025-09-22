@@ -1,6 +1,6 @@
 FROM qmcgaw/gluetun:latest
 
-RUN apk update && \
+RUN apk update
 RUN apk --no-cache add dpkg curl wget unzip net-tools socat
 
 ENV VPN_SERVICE_PROVIDER="private internet access"
