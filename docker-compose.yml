@@ -1,0 +1,21 @@
+gluetun:
+    build: .
+    image: franeckn/testtest:v2
+    restart: unless-stopped
+    container_name: gluetun
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8888:8888/tcp
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    environment:
+      - VPN_SERVICE_PROVIDER=private internet access
+      - VPN_TYPE=openvpn
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
+      - SERVER_NAMES=${SERVER_NAMES}
+      - HTTPPROXY=on
+      - HTTPPROXY_LISTENING_ADDRESS=:0.0.0.0:8888
+    volumes:
+      - /etc/gluetun/scripts:/scripts
